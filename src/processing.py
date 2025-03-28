@@ -4,10 +4,9 @@ from typing import Dict, List
 
 
 def filter_by_state(dictionary_info: List[Dict], state: str = "EXECUTED") -> List[Dict]:
+    """определяем функцию для фильтрования операций по статусу"""
     return [item for item in dictionary_info if item.get("state") == state]
 
-
-"""определяем функцию для фильтрования операций по статусу"""
 
 print(
     filter_by_state(
@@ -26,6 +25,7 @@ print(
 def sort_by_date(
     dictionary_info: List[Dict],
 ) -> List[Dict]:
+    """определяем функцию для фильтрования операций по дате"""
     return sorted(dictionary_info, key=lambda item: item["date"], reverse=True)
 
 

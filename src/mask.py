@@ -1,12 +1,7 @@
-from typing import Union
-
-"""аннотируем тип переменной"""
-
-
-def get_mask_card_number(сard_number: Union[str]) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """маскируем номер банковской карты"""
 
-    card_number_spaceless = сard_number.replace(" ", "")
+    card_number_spaceless = card_number.replace(" ", "")
     """убираем возможные пробелы"""
 
     if len(card_number_spaceless) != 16:
@@ -35,7 +30,7 @@ def get_mask_card_number(сard_number: Union[str]) -> str:
 print(get_mask_card_number("7000792289606361"))
 
 
-def get_mask_account(account_number: Union[str]) -> str:
+def get_mask_account(account_number: str) -> str:
     """маскируем номер банковского счета"""
 
     account_number_spaceless = account_number.replace(" ", "")
