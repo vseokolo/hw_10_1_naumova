@@ -16,12 +16,22 @@ dependencies = [
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.black]
+line-length = 119
+exclude = '''
+(
+  /(
+        \.eggs
+    | \.git
+    | \.mypy_cache
+    | \.venv
+  )/
+  | foo.py
+
+)
+'''
+
 [tool.poetry.group.lint.dependencies]
-
 mypy = "^1.15.0"
+black = "^25.1.0"
 
-exclude = 'venv'
-warn_return_any = true
-no_implicit_optional = true
-disallow_untyped_defs = true
-[tool.mypy]
