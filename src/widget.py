@@ -30,7 +30,7 @@ def mask_account_card(card_info: str) -> str:
         return card_info
 
 
-print(mask_account_card("MasterCard 7158300734726758"))
+print(mask_account_card("Счет 0000111139392049"))
 
 
 def get_date(user_date: str) -> str:
@@ -44,4 +44,4 @@ def get_date(user_date: str) -> str:
     return f"{user_day:02}.{user_month:02}.{user_year}"
 
 
-print(get_date("2024-03-11T02:26:18.671407"))
+print(get_date("2200-12-31T07:59:10.000001"))
