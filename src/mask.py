@@ -5,10 +5,10 @@ def get_mask_card_number(card_number: str) -> str:
     """убираем возможные пробелы"""
 
     if len(card_number_spaceless) != 16:
-        return "Номер карты должен содержать 16 цифр."
+        raise ValueError("Номер карты должен содержать 16 цифр.")
 
     if not card_number_spaceless.isdigit():
-        return "Номер карты должен содержать только цифры."
+        raise TypeError("Номер карты должен содержать только цифры.")
 
     first_part_card = card_number_spaceless[:4]
     second_part_card = card_number_spaceless[4:6]
@@ -27,7 +27,7 @@ def get_mask_card_number(card_number: str) -> str:
     return masked_number_card
 
 
-print(get_mask_card_number("7000792289606361"))
+print(get_mask_card_number("0000066666666666"))
 
 
 def get_mask_account(account_number: str) -> str:
@@ -37,10 +37,10 @@ def get_mask_account(account_number: str) -> str:
     """убираем возможные пробелы"""
 
     if len(account_number_spaceless) != 20:
-        return "Номер аккаунта должен содержать 20 цифр."
+        raise ValueError("Номер аккаунта должен содержать 20 цифр.")
 
     if not account_number_spaceless.isdigit():
-        return "Номер аккаунта должен содержать только цифры."
+        raise TypeError("Номер карты должен содержать только цифры.")
 
     first_part_account = "**"
     second_part_account = account_number_spaceless[-4:]
@@ -54,4 +54,4 @@ def get_mask_account(account_number: str) -> str:
     return masked_number_account
 
 
-print(get_mask_account("73654108430135874305"))
+print(get_mask_account("10101010100222222222"))
