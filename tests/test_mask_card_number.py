@@ -10,7 +10,8 @@ import pytest
                              ('0000066666666666', '0000 06** **** 6666')
                          ])
 
-def test_get_mask_card_number(card_number, expected):
+def test_get_mask_card_number(card_number: str, expected: str):
+    """используем параматризацию для проверки сразу нескольких тестов"""
     assert get_mask_card_number(card_number) == expected
 
     with pytest.raises(ValueError) as exc_info:
@@ -22,4 +23,5 @@ def test_get_mask_card_number(card_number, expected):
     with pytest.raises(TypeError) as exc_info:
         get_mask_card_number('aaaa1111бббm---ß')
 
-
+    with pytest.raises(ValueError) as exc_info:
+        get_mask_card_number('')

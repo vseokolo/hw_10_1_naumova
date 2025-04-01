@@ -1,5 +1,4 @@
 from src.mask import get_mask_account
-
 import pytest
 
 @pytest.mark.parametrize('account_number, expected',
@@ -9,7 +8,9 @@ import pytest
                              ('00000000000000000000', '** 0000'),
                              ('10101010100222222222', '** 2222')
                          ])
-def test_get_mask_account(account_number, expected):
+
+def test_get_mask_account(account_number: str, expected: str):
+    """используем параматризацию для проверки сразу нескольких тестов"""
     assert get_mask_account(account_number) == expected
 
     with pytest.raises(ValueError) as exc_info:
@@ -20,3 +21,6 @@ def test_get_mask_account(account_number, expected):
 
     with pytest.raises(TypeError) as exc_info:
         get_mask_account('aaaa1111бббm---ß,,,p')
+
+    with pytest.raises(ValueError) as exc_info:
+        get_mask_account('')
