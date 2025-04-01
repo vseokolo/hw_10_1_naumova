@@ -5,8 +5,14 @@ from datetime import datetime
 
 def mask_account_card(card_info: str) -> str:
     """Создаём функцию, принимающая информацию о карте в виде строки"""
+    if len(card_info) < 16:
+        raise ValueError('Номер карты или счета не может быть меньше 16')
+    if not card_info[-16:].isdigit():
+        raise TypeError('Номер карты или счета должен содержать только цифры.')
 
     if "Счет" in card_info:
+        if len(card_info) < 25:
+            raise ValueError('Номер счета не может быть меньше 20')
         first_part_account = "**"
         second_part_account = card_info[-4:]
         """определяем, какие части аккаунта будут замаскированы"""
@@ -30,7 +36,7 @@ def mask_account_card(card_info: str) -> str:
         return card_info
 
 
-print(mask_account_card("Счет 0000111139392049"))
+print(mask_account_card("Счет 00001111393920490000"))
 
 
 def get_date(user_date: str) -> str:
@@ -40,6 +46,12 @@ def get_date(user_date: str) -> str:
     user_month = datetime.strptime(user_date[:10], "%Y-%m-%d").month
     user_day = datetime.strptime(user_date[:10], "%Y-%m-%d").day
     """получаем год, месяц и день из строки пользователя"""
+
+    def validate_date(user_date):
+        try:
+            datetime.strptime(user_date, '%Y-%m-%d')
+        except ValueError:
+            raise ValueError('Дата должна соответствовать формату %Y-%m-%d')
 
     return f"{user_day:02}.{user_month:02}.{user_year}"
 
