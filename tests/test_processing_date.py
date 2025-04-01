@@ -1,6 +1,5 @@
-from audioop import reverse
-
 from src.processing import operations_data, operations_data_sorted_date, sort_by_date
+from typing import Dict, List
 
 import pytest
 
@@ -8,6 +7,8 @@ import pytest
                          [
                              (operations_data, operations_data_sorted_date)
                          ])
-def test_sort_by_date(date, expected):
+
+def test_sort_by_date(date: str, expected: List[Dict]):
+    """используем параматризацию для проверки сразу нескольких тестов"""
     assert sort_by_date(date) == expected
 
