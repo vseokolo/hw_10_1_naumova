@@ -1,16 +1,18 @@
-from typing import Union
-
-"""аннотируем тип переменной"""
-
 from datetime import datetime
 
 """импортируем модуль datetime"""
 
 
-def mask_account_card(card_info: Union[str]) -> str:
+def mask_account_card(card_info: str) -> str:
     """Создаём функцию, принимающая информацию о карте в виде строки"""
+    if len(card_info) < 16:
+        raise ValueError("Номер карты или счета не может быть меньше 16")
+    if not card_info[-16:].isdigit():
+        raise TypeError("Номер карты или счета должен содержать только цифры.")
 
     if "Счет" in card_info:
+        if len(card_info) < 25:
+            raise ValueError("Номер счета не может быть меньше 20")
         first_part_account = "**"
         second_part_account = card_info[-4:]
         """определяем, какие части аккаунта будут замаскированы"""
@@ -34,10 +36,10 @@ def mask_account_card(card_info: Union[str]) -> str:
         return card_info
 
 
-print(mask_account_card("MasterCard 7158300734726758"))
+print(mask_account_card("Счет 00001111393920490000"))
 
 
-def get_date(user_date):
+def get_date(user_date: str) -> str:
     """определяем функцию для получения даты"""
 
     user_year = datetime.strptime(user_date[:10], "%Y-%m-%d").year
@@ -46,7 +48,6 @@ def get_date(user_date):
     """получаем год, месяц и день из строки пользователя"""
 
     return f"{user_day:02}.{user_month:02}.{user_year}"
-    """возвращаем отформатированную дату"""
 
 
-print(get_date("2024-03-11T02:26:18.671407"))
+print(get_date("2200-12-31T07:59:10.000001"))
