@@ -47,12 +47,6 @@ def get_date(user_date: str) -> str:
     user_day = datetime.strptime(user_date[:10], "%Y-%m-%d").day
     """получаем год, месяц и день из строки пользователя"""
 
-    def validate_date(user_date):
-        try:
-            datetime.strptime(user_date, "%Y-%m-%d")
-        except ValueError:
-            raise ValueError("Дата должна соответствовать формату %Y-%m-%d")
-
     return f"{user_day:02}.{user_month:02}.{user_year}"
 
 

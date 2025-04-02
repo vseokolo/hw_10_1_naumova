@@ -17,12 +17,6 @@ operations_data = [
 def filter_by_state(dictionary_info: List[Dict], state: str = "EXECUTED") -> List[Dict]:
     """определяем функцию для фильтрования операций по статусу"""
 
-    def validate_date(user_date):
-        try:
-            datetime.strptime(user_date, "%Y-%m-%d")
-        except ValueError:
-            raise ValueError("Дата должна соответствовать формату %Y-%m-%d")
-
     return [item for item in dictionary_info if item.get("state") == state]
 
 
