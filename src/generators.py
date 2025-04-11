@@ -12,3 +12,14 @@ usd_transactions = filter_by_currency(transactions_first, "USD")
 for _ in range(2):
     print(next(usd_transactions))
 #функция возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной
+
+"""определяем функцию для возврата описания каждой операции в списке"""
+def transaction_descriptions(transactions_first: list[dict]):
+    for t in transactions_first:
+        yield t["description"]
+#yield возвращает требуемый генератор
+
+descriptions = transaction_descriptions(transactions_first)
+for _ in range(2):
+    print(next(descriptions))
+#функция возвращает описание каждой операции в списке
